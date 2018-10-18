@@ -1,7 +1,6 @@
 import os
 import sys
 import yaml
-import re
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
