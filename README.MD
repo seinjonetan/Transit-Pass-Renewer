@@ -1,6 +1,6 @@
 # Upass Renewer
 
-Automatically renew your BC Translink Upass every month by scheduling this script on your computer, and never have an awkward moment while tapping your card ever again.
+Automatically renew your BC Translink Upass every month by scheduling this script on your computer, and never have an awkward moment again while tapping your card on the bus.
 
 Currently compatible with UBC and SFU authentication portals.
 
@@ -14,50 +14,41 @@ git clone git@github.com:<your_github_username>/upass_renewer.git
 ### Prerequisites
 
 * Python 3.5+
+* Google Chrome
 
 Use pip install to get other requirements:
 ```
 pip install -r requirements.txt
 ```
 
-### Setup and Scheduling
+## Setup and Scheduling
 
+### Fill in config file
 
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Enter your university name and authentication details into the config.yml file. Currently Upass Renewer only supports UBC and SFU authentication portals. For security reasons, please keep your config file in a safe location and never share it. Here's an example:
 
 ```
-until finished
+university: "University of British Columbia"
+username: johnsmith
+password: 0Tw22dzp0D
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+### Running the script
 
-## Contributing
+Run the script from your command line to check if it works. If your Upass is not available to renew, the script will simply halt after authentication.
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+```
+python main.py
+```
 
-## Versioning
+### Scheduling the script
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+There are several ways to do this, and can vary depening on your OS. Here are some helpful tutorials:
 
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+[Windows tutorial](https://www.esri.com/arcgis-blog/products/product/analytics/scheduling-a-python-script-or-model-to-run-at-a-prescribed-time/)
+[Mac OS tutorial](https://www.maketecheasier.com/use-launchd-run-scripts-on-schedule-macos/)
+[Linux tutorial](http://1selfsolutions.com/scheduling-python-script-linux-cron-job/)
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Shoutout to Pvakil, whose code I based this project on
