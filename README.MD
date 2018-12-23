@@ -25,7 +25,9 @@ pip install -r requirements.txt
 
 ### Fill in config file
 
-Enter your university name and authentication details into the config.yml file. Currently Upass Renewer only supports UBC and SFU authentication portals. For security reasons, please keep your config file in a safe location and never share it. Here's an example:
+Enter your university name and authentication details into the config.yml file. Currently Upass Renewer only supports UBC and SFU authentication portals. 
+
+For security reasons, please keep your config file in a safe location and never share it. Here's an example:
 
 ```
 university: "University of British Columbia"
@@ -45,9 +47,9 @@ python main.py
 
 There are several ways to do this, and can vary depening on your OS. Here are some helpful tutorials:
 
-[Windows tutorial](https://www.esri.com/arcgis-blog/products/product/analytics/scheduling-a-python-script-or-model-to-run-at-a-prescribed-time/)
-[Mac OS tutorial](https://www.maketecheasier.com/use-launchd-run-scripts-on-schedule-macos/)
-[Linux tutorial](http://1selfsolutions.com/scheduling-python-script-linux-cron-job/)
+* [Windows tutorial](https://www.esri.com/arcgis-blog/products/product/analytics/scheduling-a-python-script-or-model-to-run-at-a-prescribed-time/)
+* [Mac OS tutorial](https://www.maketecheasier.com/use-launchd-run-scripts-on-schedule-macos/)
+* [Linux tutorial](http://1selfsolutions.com/scheduling-python-script-linux-cron-job/)
 
 ## Acknowledgments
 

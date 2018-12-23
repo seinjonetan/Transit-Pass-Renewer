@@ -48,9 +48,9 @@ def ubc_auth(config, driver):
 	"""
 	Login to UBC portal
 	"""
-	driver.find_element_by_id("j_username").send_keys(config["username"])
+	driver.find_element_by_id("username").send_keys(config["username"])
 	driver.find_element_by_id("password").send_keys(config["password"])
-	driver.find_element_by_name("action").send_keys(Keys.RETURN)
+	driver.find_element_by_name("_eventId_proceed").send_keys(Keys.RETURN)
 
 
 def sfu_auth(config, driver):
