@@ -11,7 +11,7 @@ def parse_yml():
 	"""
 	with open('config.yml') as stream:
 	    try:
-	        config = yaml.load(stream)
+	        config = yaml.safe_load(stream)
 	    except yaml.YAMLError as exc:
 	        print(exc)
 	return config
@@ -22,7 +22,7 @@ def init_driver():
 	"""
 	options = webdriver.ChromeOptions()
 	options.add_argument("--start-maximized")
-	driver = webdriver.Chrome(options=options, executable_path="chromedriver.exe")
+	driver = webdriver.Chrome()
 	return driver
 
 def upass_loadpage(config, driver):
@@ -31,15 +31,15 @@ def upass_loadpage(config, driver):
 	"""
 	driver.get("https://upassbc.translink.ca/")
 	option_visible_text = config["university"]
-	select = driver.find_element_by_id("PsiId")
+	select = driver.find_element(by="id", value="PsiId")
 	driver.execute_script("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, option_visible_text);
 
-	driver.find_element_by_name("PsiId").send_keys(Keys.RETURN)
-	driver.find_element_by_name("PsiId").send_keys(Keys.RETURN)
-	driver.find_element_by_name("PsiId").send_keys(Keys.DOWN)
-	driver.find_element_by_name("PsiId").send_keys(Keys.UP)
-	driver.find_element_by_name("PsiId").send_keys(Keys.TAB)
-	element = driver.find_element_by_id("goButton")
+	driver.find_element(by="name", value="PsiId").send_keys(Keys.RETURN)
+	driver.find_element(by="name", value="PsiId").send_keys(Keys.RETURN)
+	driver.find_element(by="name", value="PsiId").send_keys(Keys.DOWN)
+	driver.find_element(by="name", value="PsiId").send_keys(Keys.UP)
+	driver.find_element(by="name", value="PsiId").send_keys(Keys.TAB)
+	element = driver.find_element(by="id", value="goButton")
 	element.send_keys("RETURN")
 	element.submit()
 
@@ -48,24 +48,24 @@ def ubc_auth(config, driver):
 	"""
 	Login to UBC portal
 	"""
-	driver.find_element_by_id("username").send_keys(config["username"])
-	driver.find_element_by_id("password").send_keys(config["password"])
-	driver.find_element_by_name("_eventId_proceed").send_keys(Keys.RETURN)
+	driver.find_element(by="id", value="username").send_keys(config["username"])
+	driver.find_element(by="id", value="password").send_keys(config["password"])
+	driver.find_element(by="name", value="_eventId_proceed").send_keys(Keys.RETURN)
 
 
 def sfu_auth(config, driver):
 	"""
 	Login to SFU portal
 	"""
-	driver.find_element_by_id("username").send_keys(config["username"])
-	driver.find_element_by_id("password").send_keys(config["password"])
+	driver.find_element(by="id", value="username").send_keys(config["username"])
+	driver.find_element(by="id", value="password").send_keys(config["password"])
 	driver.find_element_by_tag_name("INPUT").send_keys(Keys.RETURN)
 
 
 def request_pass(driver):
 
-	driver.find_element_by_id("chk_1").click()
-	driver.find_element_by_id("requestButton").click()
+	driver.find_element(by="id", value="chk_1").click()
+	driver.find_element(by="id", value="requestButton").click()
 
 
 def main():
