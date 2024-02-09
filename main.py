@@ -4,6 +4,9 @@ import yaml
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
 def parse_yml():
@@ -70,8 +73,28 @@ def request_pass(driver):
 		driver.find_element(by="id", value="requestButton").click()
 	except:
 		print("No pass available for request.")
-	
-def check_stats(driver):
+
+def send_email():
+	# Load the email and password from the YAML file
+    with open('config.yml') as file:
+        config = yaml.safe_load(file)
+    email = config['email']
+    password = config['password']
+
+    msg = MIMEMultipart()
+    msg['From'] = email
+    msg['To'] = email
+    msg['Subject'] = 'Action was successful'
+    msg.attach(MIMEText('The action was successful.', 'plain'))
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(email, password)
+    text = msg.as_string()
+    server.sendmail(email, 'recipient-email@gmail.com', text)
+    server.quit()
+
+def check_stats(driver, email=0):
 	# Check status to ensure that the pass has been requested
 	status_divs = driver.find_elements(by="class name", value="status")
 	for div in status_divs:
@@ -79,6 +102,8 @@ def check_stats(driver):
 			print("Action was not successful")
 			return
 	print("Action was successful")
+	if email == 1:
+		send_email()
 
 
 def main():

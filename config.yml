@@ -3,3 +3,7 @@
 university: "University of British Columbia" #"Simon Fraser University"
 username:
 password:
+
+# Gmail login (experimental)
+email:
+email_password:
